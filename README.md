@@ -4,7 +4,7 @@
 
 # Show it once. It’s off your list.
 
-Taskwipe sits in a Chrome side panel and works in the tab you already have open. You do a web task once, or you hand it a sentence and a file. It keeps **who you are**, **how you write**, and **the way that task actually goes**. Next time, the same work is a run, not an afternoon.
+Taskwipe sits in a Chrome Extension Side Panel and works in the tab you already have open. You do a web task once, or you hand it a sentence and a file. It keeps **who you are**, **how you write**, and **the way that task actually goes**. Next time, the same work is a run, not an afternoon.
 
 Hand it the task and the files. It already knows who you are.
 
