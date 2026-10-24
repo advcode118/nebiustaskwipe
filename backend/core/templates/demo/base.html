@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Taskwipe demo{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #e8efe6;
+        --ink: #1c2622;
+        --muted: #5c6d66;
+        --line: #c5d2c8;
+        --accent: #2f6f62;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      a { color: var(--accent); }
+      main { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+      h1 { font-weight: 800; letter-spacing: -0.03em; margin: 0 0 8px; }
+      p.lede { color: var(--muted); margin: 0 0 28px; }
+      label { display: block; font-size: 14px; margin: 16px 0 6px; }
+      input, textarea, select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+        font: inherit;
+        color: inherit;
+      }
+      textarea { min-height: 110px; resize: vertical; }
+      button[type="submit"],
+      a.continue {
+        margin-top: 24px;
+        background: var(--accent);
+        color: #f4faf7;
+        border: 0;
+        padding: 12px 18px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      a.continue { display: inline-block; text-decoration: none; }
+      .step { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+      .done { display: none; margin-top: 24px; padding: 16px; background: #dcebe4; }
+      body.sent .form { display: none; }
+      body.sent .done { display: block; }
+    </style>
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+    <script>
+      document.addEventListener("submit", function (event) {
+        event.preventDefault();
+        document.body.classList.add("sent");
+      });
+      document.querySelectorAll("form").forEach(function (form) {
+        form.setAttribute("autocomplete", "off");
+        var decoy = document.createElement("div");
+        decoy.setAttribute("aria-hidden", "true");
+        decoy.style.cssText = "position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden";
+        decoy.innerHTML =
+          '<input type="text" name="fake-name" autocomplete="name" tabindex="-1" />' +
+          '<input type="email" name="fake-email" autocomplete="email" tabindex="-1" />' +
+          '<input type="text" name="fake-line1" autocomplete="address-line1" tabindex="-1" />' +
+          '<input type="text" name="fake-city" autocomplete="address-level2" tabindex="-1" />' +
+          '<input type="text" name="fake-postcode" autocomplete="postal-code" tabindex="-1" />';
+        form.insertBefore(decoy, form.firstChild);
+      });
+      document.querySelectorAll("input, textarea, select").forEach(function (field) {
+        if (field.getAttribute("tabindex") === "-1") return;
+        if (field.type === "email") field.type = "text";
+        field.setAttribute("autocomplete", "one-time-code");
+        field.setAttribute("autocorrect", "off");
+        field.setAttribute("autocapitalize", "off");
+        field.setAttribute("spellcheck", "false");
+        field.setAttribute("data-1p-ignore", "true");
+        field.setAttribute("data-lpignore", "true");
+        field.readOnly = true;
+        field.addEventListener("focus", function () {
+          field.readOnly = false;
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+{% extends "demo/base.html" %}
+{% block title %}Two Taskwipe demos{% endblock %}
+{% block extra_css %}
+<style>
+  :root {
+    --bg: #d7dfd0;
+    --ink: #182018;
+    --muted: #4a584c;
+    --line: #9aa892;
+    --accent: #8c2f24;
+  }
+  body {
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 47px,
+        rgba(24, 32, 24, 0.04) 47px,
+        rgba(24, 32, 24, 0.04) 48px
+      ),
+      var(--bg);
+  }
+  main { max-width: 1080px; padding-top: 36px; }
+  .mast {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: end;
+    border-bottom: 3px solid #182018;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .mast p { margin: 8px 0 0; max-width: 58ch; }
+  .ready {
+    font-size: 13px;
+    border: 1px solid #182018;
+    padding: 10px 12px;
+    background: #eef3e8;
+  }
+  .ready code { font-size: 12px; }
+  .persona {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 28px;
+    margin: 0 0 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  .persona dt { color: var(--muted); font-size: 13px; }
+  .persona dd { margin: 0 0 8px; }
+  .tracks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid #182018;
+  }
+  article.track {
+    padding: 28px 28px 48px 24px;
+    border-left: 10px solid #8c2f24;
+    background: #e8eee1;
+  }
+  article.track.two {
+    border-left-color: #2c4578;
+    background: #e4e8ee;
+    border-left-width: 10px;
+  }
+  .track h2 { margin: 0 0 4px; font-size: 28px; }
+  .mins { color: var(--muted); margin: 0 0 16px; font-size: 14px; }
+  .files {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+  }
+  .files li { margin: 0 0 6px; }
+  .files a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .track ol.steps {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .track ol.steps > li {
+    margin: 0 0 16px;
+    padding-left: 4px;
+  }
+  .track ol.steps strong { display: block; margin-bottom: 4px; }
+  q, .say {
+    display: block;
+    margin: 6px 0;
+    padding: 8px 10px;
+    background: rgba(24, 32, 24, 0.06);
+    font-style: normal;
+  }
+  .see { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+  .if { font-size: 13px; color: #5a3a18; margin: 6px 0 0; }
+  .pages { font-size: 14px; margin: 12px 0 0; }
+  .pages a { color: inherit; }
+  @media (max-width: 860px) {
+    .mast, .persona, .tracks { grid-template-columns: 1fr; }
+    article.track.two { border-top: 1px solid #182018; }
+  }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+  <div class="mast">
+    <div>
+      <h1>Two demos on this machine</h1>
+      <p class="lede">
+        Same Chrome tab, same side panel. Demo 1 is a job with a CV.
+        Demo 2 is an address, then a clip with a caption. Submit, Place order,
+        and Publish wait for you.
+      </p>
+    </div>
+    <div class="ready">
+      API <code>127.0.0.1:8001</code><br />
+      Load unpacked → <code>extension</code><br />
+      Pin Taskwipe, open the panel
+    </div>
+  </div>
+
+  <dl class="persona">
+    <div>
+      <dt>Persona</dt>
+      <dd>Maya Chen</dd>
+      <dt>University email</dt>
+      <dd>maya.chen24@imperial.ac.uk</dd>
+      <dt>Phone</dt>
+      <dd>+44 7700 900123</dd>
+    </div>
+    <div>
+      <dt>Address</dt>
+      <dd>14 Exhibition Road, London, SW7 2AZ</dd>
+      <dt>Course</dt>
+      <dd>MEng Computer Science, Year 3, 2024–2028</dd>
+      <dt>Why / notes</dt>
+      <dd>Systems and teaching. Leave parcels with the porter.</dd>
+    </div>
+  </dl>
+
+  <div class="tracks">
+    <article class="track">
+      <h2>Demo 1 — Apply</h2>
+      <p class="mins">About 12 minutes. Vault, four-page form, confirm, then a second site.</p>
+      <ul class="files">
+        <li><a href="/demo/files/maya-chen-cv.docx/">maya-chen-cv.docx</a></li>
+        <li><a href="/demo/files/maya-chen-transcript.docx/">maya-chen-transcript.docx</a></li>
+      </ul>
+      <ol class="steps">
+        <li>
+          <strong>Load the facts</strong>
+          Open Vault. Upload the CV, then the transcript. Keep name, school email,
+          phone, university, degree, major, years, postcode. Skip nothing unless it is wrong.
+          In Profile, add Address line 1 <em>14 Exhibition Road</em> and City <em>London</em>
+          if they are missing. Opening Profile does not call the model.
+          <p class="see">You should see unconfirmed suggestions with a quote from the file. Keep confirms them. A job can still use them before Keep.</p>
+        </li>
+        <li>
+          <strong>Open the internship</strong>
+          <a href="/demo/form-a/">Form A, page 1</a> — cream, serif, Imperial.
+          <p class="pages">Personal → Education → Transcript → Review. Three Continues, then Submit.</p>
+        </li>
+        <li>
+          <strong>Deal with this</strong>
+          Drop both files on the panel if they are not already in the vault. Prompt:
+          <span class="say">apply with my CV and transcript, stop before submit</span>
+          Click <em>Deal with this</em>. Open Details on the job card. Check the stages,
+          the stored facts, and the transcript. Click <em>Go</em>.
+          <p class="see">Personal details fill locally. Education is at most one model call (the year dropdown). The transcript attaches by vault id. Review does not call the model. The ribbon says it will stop before Submit.</p>
+          <p class="if">If it asks for a value that is already in Profile, answer and tick remember only if it was missing. If it is on the wrong host, do not force unless you meant to.</p>
+        </li>
+        <li>
+          <strong>Confirm, do not submit for them</strong>
+          When the last page is filled, the overlay asks before Submit application.
+          Show the filled review. You may confirm or hit Don't.
+          <p class="see">The click is blocked in the executor even if the model forgets to ask.</p>
+        </li>
+        <li>
+          <strong>Same facts, different labels</strong>
+          Open <a href="/demo/form-b/">Form B — student ambassador</a> (navy).
+          Accept cookies if the overlay is up. Click <em>Try this page</em>, or run the internship skill with <em>Run on this tab</em>.
+          <p class="see">Name / Email / Programme / Graduation year fill from memory. Motivation may pause as this-run. Send intake form still waits.</p>
+        </li>
+        <li>
+          <strong>Activity</strong>
+          Open Activity. You should see the procedure, the stage reached, the facts used.
+          Download profile and vault — that zip is confirmed facts plus the original files, no model call.
+        </li>
+      </ol>
+      <p class="pages">
+        Optional extra: on Form A click <em>Record this</em>, fill Maya's values, Continue three times, stop before Submit, then <em>That's the task</em>.
+        Review four pages on the strip. Name / email / address should be yours; the motivation is this-run. <em>Keep this skill</em>, then run it on Form B.
+      </p>
+    </article>
+
+    <article class="track two">
+      <h2>Demo 2 — Send, then post</h2>
+      <p class="mins">About 10 minutes. Address memory, then a caption you keep.</p>
+      <ul class="files">
+        <li><a href="/demo/files/clip-one.mp4/">clip-one.mp4</a></li>
+        <li><a href="/demo/files/clip-two.mp4/">clip-two.mp4</a></li>
+        <li><a href="/demo/files/caption-rule.txt/">caption-rule.txt</a> (optional)</li>
+      </ul>
+      <ol class="steps">
+        <li>
+          <strong>A writing rule, no browser</strong>
+          Prompt, then Deal with this:
+          <span class="say">remember: never smash that like. keep captions dry and specific</span>
+          <p class="see">This is mode remember. A CraftExample is saved. The run completes without opening a page.</p>
+        </li>
+        <li>
+          <strong>Record the parcel once</strong>
+          Open <a href="/demo/parcel/">Dispatch a parcel</a>. Click <em>Record this</em>.
+          Fill Maya's name, phone, 14 Exhibition Road, London, SW7 2AZ.
+          Delivery notes: <em>Leave with the porter</em>. Stop before Place order.
+          Click <em>That's the task</em>.
+          <p class="see">On review, name / phone / address are yours. Notes can stay this-run. Keep this skill. Place order is never in the local fill list.</p>
+        </li>
+        <li>
+          <strong>Do it again from memory</strong>
+          Reload the parcel page so the fields are empty. <em>Run on this tab</em>, or
+          <span class="say">send this parcel, stop before Place order</span>
+          then Deal with this → Go.
+          <p class="see">Address fills from Profile. Overlay asks before Place order. Don't click through unless you are showing the confirm.</p>
+        </li>
+        <li>
+          <strong>First clip</strong>
+          Open <a href="/demo/studio/">Creator desk</a>. Drop clip-one.mp4 on the panel. Prompt:
+          <span class="say">upload this with a suitable caption</span>
+          Deal with this. Edit the drafted caption if you want it drier. Tick
+          <em>Keep this writing if it was good</em>. Go.
+          <p class="see">It should navigate to the desk (not live YouTube). Visibility can stay Private or Unlisted. Publish waits.</p>
+        </li>
+        <li>
+          <strong>Second clip reuses the voice</strong>
+          Reload the desk. Drop clip-two.mp4. Same prompt. The card should draft from the kept example, not invent a new house style.
+          Go, stop before Publish. Keep as skill if you want the walk saved separately from the caption.
+          <p class="see">Keep as skill and Keep this writing are independent. The walk is a procedure. The caption is an example.</p>
+        </li>
+      </ol>
+      <p class="pages">
+        If a live checkout is already logged in, use that instead of the parcel page and still stop before payment.
+        Do not make live YouTube Studio the only path — this desk is the reliable one.
+      </p>
+    </article>
+  </div>
+</main>
+{% endblock %}

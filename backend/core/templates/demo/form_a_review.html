@@ -1,0 +1,30 @@
+{% extends "demo/base.html" %}
+{% block title %}Imperial internship — review{% endblock %}
+{% block extra_css %}
+<style>
+  :root { --bg: #f3efe4; --ink: #241c14; --accent: #7a3e1d; --line: #d9cbb6; }
+  body { font-family: "IBM Plex Serif", Georgia, serif; }
+  header { border-bottom: 2px solid #241c14; padding-bottom: 16px; margin-bottom: 28px; }
+  .kicker { font-size: 13px; }
+  .rail { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0 0 20px; font-size: 13px; border-bottom: 1px solid var(--line); }
+  .rail li { padding: 0 0 8px; color: var(--muted); }
+  .rail li.now { color: var(--ink); font-weight: 600; }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+  <header>
+    <div class="kicker">Imperial College London — summer internships</div>
+    <h1>Review and submit</h1>
+  </header>
+  {% include "demo/form_a_progress.html" with current="review" %}
+  <p class="step">Page 4 of 4 — why you want this, then stop before Submit</p>
+  <form class="form">
+    <label for="why">Why this internship</label>
+    <textarea id="why" name="why"></textarea>
+
+    <button type="submit">Submit application</button>
+  </form>
+  <div class="done">Application received. This demo never leaves your machine.</div>
+</main>
+{% endblock %}

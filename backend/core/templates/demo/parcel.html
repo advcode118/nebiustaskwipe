@@ -1,0 +1,50 @@
+{% extends "demo/base.html" %}
+{% block title %}Send a parcel{% endblock %}
+{% block extra_css %}
+<style>
+  :root { --bg: #f6f1e8; --ink: #2a2118; --accent: #c45c26; --line: #e0d3c2; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid .wide { grid-column: 1 / -1; }
+  .paywall { margin-top: 32px; padding-top: 16px; border-top: 1px dashed #c45c26; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+  <h1>Dispatch a parcel</h1>
+  <p class="lede">Fill the delivery address. Taskwipe should stop before Place order.</p>
+  <p class="step">One paperback to SW7 — postage calculated, payment is the next click.</p>
+  <form class="form" autocomplete="off">
+    <div class="grid">
+      <div class="wide">
+        <label for="full-name">Full name</label>
+        <input id="full-name" name="full_name" autocomplete="off" />
+      </div>
+      <div class="wide">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" autocomplete="off" />
+      </div>
+      <div class="wide">
+        <label for="line1">Address line 1</label>
+        <input id="line1" name="line1" autocomplete="off" />
+      </div>
+      <div>
+        <label for="city">City</label>
+        <input id="city" name="city" autocomplete="off" />
+      </div>
+      <div>
+        <label for="postcode">Postcode</label>
+        <input id="postcode" name="postcode" autocomplete="off" />
+      </div>
+      <div class="wide">
+        <label for="notes">Delivery notes</label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+    </div>
+    <div class="paywall">
+      <button type="submit">Place order</button>
+    </div>
+  </form>
+  <div class="done">Order was not charged. This is a fake checkout.</div>
+</main>
+{% endblock %}

@@ -1,0 +1,12 @@
+---
+description: TaskWipe product spec, slice queue, and standing constraints
+alwaysApply: true
+---
+
+# TaskWipe
+
+Follow `docs/HOW_IT_WAS_BUILT.md` for what already works. Follow `docs/NEXT.md` for queued work.
+
+If asked to continue the product, do the first undone slice in `docs/NEXT.md` and stop at that slice's Stop line. Do not treat `NEXT.md` as the current product.
+
+Standing rules, speed budget, and out-of-scope list are in `docs/NEXT.md`. Do not rewrite them here.

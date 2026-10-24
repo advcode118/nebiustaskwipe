@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Taskwipe",
+  "version": "0.1.0",
+  "description": "Show a web task once, then wipe it off your list.",
+  "permissions": ["tabs", "activeTab", "scripting", "storage", "sidePanel", "webNavigation"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Taskwipe"
+  },
+  "side_panel": {
+    "default_path": "overlay/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

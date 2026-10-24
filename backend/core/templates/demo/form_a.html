@@ -1,0 +1,41 @@
+{% extends "demo/base.html" %}
+{% block title %}Imperial internship application{% endblock %}
+{% block extra_css %}
+<style>
+  :root { --bg: #f3efe4; --ink: #241c14; --accent: #7a3e1d; --line: #d9cbb6; }
+  body { font-family: "IBM Plex Serif", Georgia, serif; }
+  header { border-bottom: 2px solid #241c14; padding-bottom: 16px; margin-bottom: 28px; }
+  .kicker { font-size: 13px; }
+  .rail { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0 0 20px; font-size: 13px; border-bottom: 1px solid var(--line); }
+  .rail li { padding: 0 0 8px; color: var(--muted); }
+  .rail li.now { color: var(--ink); font-weight: 600; }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+  <header>
+    <div class="kicker">Imperial College London — summer internships</div>
+    <h1>Application for a computing internship</h1>
+  </header>
+  {% include "demo/form_a_progress.html" with current="personal" %}
+  <p class="step">Page 1 of 4 — personal details and address</p>
+  <form class="form" autocomplete="off">
+    <label for="legal-name">Full legal name</label>
+    <input id="legal-name" name="legal_name" autocomplete="off" />
+
+    <label for="uni-email">University email</label>
+    <input id="uni-email" name="university_email" type="text" autocomplete="one-time-code" />
+
+    <label for="line1">Address line 1</label>
+    <input id="line1" name="line1" autocomplete="off" />
+
+    <label for="city">City</label>
+    <input id="city" name="city" autocomplete="off" />
+
+    <label for="postcode">Postcode</label>
+    <input id="postcode" name="postcode" autocomplete="off" />
+
+    <a class="continue" href="/demo/form-a/education/">Continue</a>
+  </form>
+</main>
+{% endblock %}

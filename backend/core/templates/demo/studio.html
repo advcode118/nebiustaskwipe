@@ -1,0 +1,50 @@
+{% extends "demo/base.html" %}
+{% block title %}Creator desk{% endblock %}
+{% block extra_css %}
+<style>
+  :root { --bg: #14242c; --ink: #e4eee8; --muted: #8ea39a; --line: #2d4a55; --accent: #7eb8a4; }
+  body { background: var(--bg); color: var(--ink); }
+  a { color: var(--accent); }
+  input, textarea, select { background: #1b313a; border-color: var(--line); color: var(--ink); }
+  button[type="submit"] { background: #d4564e; color: #f7ecea; }
+  .desk { display: grid; gap: 18px; }
+  .file-well {
+    border: 1px dashed var(--line);
+    padding: 18px;
+    background: #1b313a;
+  }
+  .kicker { color: var(--muted); font-size: 13px; letter-spacing: 0.04em; }
+  .done { background: #1f3d36; color: var(--ink); }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+  <p class="kicker">Creator desk — a stand-in for YouTube Studio</p>
+  <h1>Upload a video</h1>
+  <p class="lede">Drop a file, write a title and description, then stop before Publish. Keep the first caption, then reuse it on a second clip.</p>
+  <form class="form desk">
+    <div class="file-well">
+      <label for="video-file">Video file</label>
+      <input id="video-file" name="video" type="file" accept="video/*,.mp4,.mov,.webm" />
+    </div>
+    <div>
+      <label for="video-title">Title</label>
+      <input id="video-title" name="title" maxlength="100" />
+    </div>
+    <div>
+      <label for="video-description">Description</label>
+      <textarea id="video-description" name="description" rows="6"></textarea>
+    </div>
+    <div>
+      <label for="visibility">Visibility</label>
+      <select id="visibility" name="visibility">
+        <option value="private">Private</option>
+        <option value="unlisted">Unlisted</option>
+        <option value="public">Public</option>
+      </select>
+    </div>
+    <button type="submit">Publish</button>
+  </form>
+  <div class="done">Not published. This desk is local, so Publish never leaves the machine.</div>
+</main>
+{% endblock %}

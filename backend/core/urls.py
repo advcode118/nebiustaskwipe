@@ -1,0 +1,36 @@
+from django.urls import path
+
+from core import views
+
+urlpatterns = [
+    path("health/", views.health),
+    path("skills/", views.skills_collection),
+    path("skills/match/", views.skills_match),
+    path("skills/<uuid:skill_id>/", views.skill_detail),
+    path("skills/<uuid:skill_id>/commit/", views.skill_commit),
+    path("skills/<uuid:skill_id>/stages/", views.skill_stages),
+    path("skills/<uuid:skill_id>/stages/<uuid:stage_id>/", views.skill_stage_detail),
+    path("memory/", views.memory_collection),
+    path("memory/<uuid:fact_id>/", views.memory_detail),
+    path("recordings/", views.recordings_collection),
+    path("runs/", views.runs_collection),
+    path("export/", views.export_archive),
+    path("runs/<uuid:run_id>/", views.run_detail),
+    path("runs/<uuid:run_id>/turn/", views.run_turn),
+    path("runs/<uuid:run_id>/confirm/", views.run_confirm),
+    path("runs/<uuid:run_id>/plan/", views.run_plan),
+    path("runs/<uuid:run_id>/answer/", views.run_answer),
+    path("runs/<uuid:run_id>/resume/", views.run_resume),
+    path("runs/<uuid:run_id>/keep/", views.run_keep),
+    path("runs/<uuid:run_id>/pause/", views.run_pause),
+    path("runs/<uuid:run_id>/file/", views.run_file),
+    path("examples/", views.examples_collection),
+    path("examples/<uuid:example_id>/", views.example_detail),
+    path("jobs/", views.jobs_collection),
+    path("jobs/<uuid:run_id>/go/", views.job_go),
+    path("documents/", views.documents_collection),
+    path("documents/<uuid:document_id>/", views.document_detail),
+    path("documents/<uuid:document_id>/file/", views.document_file),
+    path("documents/<uuid:document_id>/accept/", views.document_accept),
+    path("documents/<uuid:document_id>/reject/", views.document_reject),
+]

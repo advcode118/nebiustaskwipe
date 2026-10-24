@@ -1,0 +1,75 @@
+{% extends "demo/base.html" %}
+{% block title %}Student ambassador intake{% endblock %}
+{% block extra_css %}
+<style>
+  :root { --bg: #10233a; --ink: #e7eef6; --muted: #9bb0c7; --accent: #e3b34c; --line: #2c4a6b; }
+  body { background: radial-gradient(1200px 500px at 10% -10%, #1b3b5c, #10233a); }
+  input, textarea, select { background: #0c1b2c; color: #e7eef6; }
+  button[type="submit"] { background: #e3b34c; color: #10233a; }
+  .done { background: #1b3b5c; }
+  .union { font-size: 13px; letter-spacing: 0.02em; color: #9bb0c7; margin: 0 0 8px; }
+  .cookie-gate {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 16, 28, 0.72);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+    z-index: 20;
+  }
+  .cookie-gate[hidden] { display: none; }
+  .cookie-card {
+    background: #e7eef6;
+    color: #10233a;
+    padding: 18px 20px;
+    width: min(440px, 100%);
+  }
+  .cookie-card button {
+    margin-top: 12px;
+    background: #10233a;
+    color: #e7eef6;
+    border: 0;
+    padding: 10px 14px;
+    font: inherit;
+    cursor: pointer;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div id="cookie-gate" class="cookie-gate" role="dialog" aria-label="Cookies">
+  <div class="cookie-card">
+    <p>This intake uses cookies to keep the union form working.</p>
+    <button type="button" id="accept-cookies">Accept cookies</button>
+  </div>
+</div>
+<main>
+  <p class="union">Campus union — student ambassador intake</p>
+  <h1>Student ambassador intake</h1>
+  <p class="lede">Different labels, same facts. Deploy the internship skill here.</p>
+  <form class="form" autocomplete="off">
+    <label for="name">Name</label>
+    <input id="name" name="name" autocomplete="off" />
+
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="text" autocomplete="one-time-code" />
+
+    <label for="programme">Programme</label>
+    <input id="programme" name="programme" />
+
+    <label for="grad">Graduation year</label>
+    <input id="grad" name="graduation_year" />
+
+    <label for="motivation">Motivation</label>
+    <textarea id="motivation" name="motivation"></textarea>
+
+    <button type="submit">Send intake form</button>
+  </form>
+  <div class="done">Intake saved. Notice the fields were not the same as Form A.</div>
+</main>
+<script>
+  document.getElementById("accept-cookies").addEventListener("click", function () {
+    document.getElementById("cookie-gate").hidden = true;
+  });
+</script>
+{% endblock %}
