@@ -22,7 +22,7 @@ The page you are on decides what rises to the top. A skill for this site, or thi
 
 **An application.** Put a CV and a transcript in the vault. Taskwipe reads them on upload and suggests the facts. Nothing is kept until you say so. “Apply with my CV and transcript” walks a multi-page form, attaches the transcript, and stops on Submit. Open a second site whose labels are different. The same person is already there.
 
-**A listing from a photo.** “Sell this blue mug, used, ceramic and glazed, £2, medium, unbranded.” One look at the photo writes the title, the description, the price, the condition, the brand, the colour, the size, and the material. Vinted, eBay, and Facebook Marketplace are filled from that card. Leave out the price or the condition and the job card asks before it starts. Upload, List, and Publish wait for you.
+**A listing from a photo.** “Sell this blue mug, used, ceramic, and glazed, £2, medium, unbranded.” One look at the photo writes the title, the description, the price, the condition, the brand, the colour, the size, and the material. Vinted, eBay, and Facebook Marketplace are filled from that card. Leave out the price or the condition and the job card asks before it starts. Upload, List, and Publish wait for you.
 
 **A caption worth keeping.** The address is you. The caption is how you write. Neither is buried inside a single playbook. A caption you keep goes in the example book, and the next one follows it.
 
